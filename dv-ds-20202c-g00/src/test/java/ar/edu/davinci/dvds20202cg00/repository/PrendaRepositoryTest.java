@@ -7,6 +7,8 @@ import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
@@ -19,6 +21,8 @@ import ar.edu.davinci.dvds20202cg00.repository.PrendaRepository;
 @ExtendWith(SpringExtension.class)
 public class PrendaRepositoryTest {
 	
+	private final Logger LOGGER = LoggerFactory.getLogger(PrendaRepositoryTest.class);
+
 	@Autowired
 	PrendaRepository prendaRepository;
 
@@ -26,7 +30,7 @@ public class PrendaRepositoryTest {
 	void testFindAll() {
 		
 		List<Prenda> prendas = prendaRepository.findAll(); 
-		System.out.println("prendas.size: " + prendas.size()) ;
+		LOGGER.info("Find All - prendas.size: " + prendas.size()) ;
 		assertNotNull(prendas);
 		assertTrue(prendas.size() > 0);
 	}
@@ -36,13 +40,13 @@ public class PrendaRepositoryTest {
 		Long id = 1L;
 		Optional<Prenda> prendaOptional = prendaRepository.findById(id);
 
-		System.out.println("prenda is present: " + prendaOptional.isPresent()) ;
+		LOGGER.info("prenda is present: " + prendaOptional.isPresent()) ;
 		
 		assertTrue(prendaOptional.isPresent());
 		
 		if (prendaOptional.isPresent()) {
 			assertNotNull(prendaOptional.get());
-			System.out.println("prenda: " + prendaOptional.get()) ;
+			LOGGER.info("prenda: " + prendaOptional.get()) ;
 		}
 	}
 

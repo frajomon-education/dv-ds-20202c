@@ -51,7 +51,7 @@ public class Prenda implements Serializable{
 	@Column(name = "prd_precio_base")
 	private BigDecimal precioBase;
 	
-	@Column(name = "prd_tipo")
+	@Column(name = "prd_tipo_prenda")
 	@Enumerated(EnumType.STRING)
 	private TipoPrenda tipo;
 	
