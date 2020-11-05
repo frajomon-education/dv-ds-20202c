@@ -16,12 +16,12 @@ import ar.edu.davinci.dvds20202cg00.model.Prenda;
 
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
-public class PrendaServiceTest {
+public class PrendaServiceNewTest {
 
-	private final Logger LOGGER = LoggerFactory.getLogger(PrendaServiceTest.class);
+	private final Logger LOGGER = LoggerFactory.getLogger(PrendaServiceNewTest.class);
 
 	@Autowired
-	private PrendaService prendaService;
+	private PrendaServiceNew prendaService;
 	
 	@Test
 	void testListAll() {
