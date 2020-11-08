@@ -14,8 +14,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import ar.edu.davinci.dvds20202cg00.model.Prenda;
-import ar.edu.davinci.dvds20202cg00.repository.PrendaRepository;
-
+import ar.edu.davinci.dvds20202cg00.model.TipoPrenda;
 
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
@@ -24,29 +23,30 @@ public class PrendaRepositoryTest {
 	private final Logger LOGGER = LoggerFactory.getLogger(PrendaRepositoryTest.class);
 
 	@Autowired
-	PrendaRepository prendaRepository;
-
+	private PrendaRepository prendaRepository;
+	
 	@Test
 	void testFindAll() {
+		assertNotNull(prendaRepository, "El repositorio es nulo.");
+		List<Prenda> prendas = prendaRepository.findAll();
 		
-		List<Prenda> prendas = prendaRepository.findAll(); 
-		LOGGER.info("Find All - prendas.size: " + prendas.size()) ;
-		assertNotNull(prendas);
-		assertTrue(prendas.size() > 0);
+		LOGGER.info("Prendas encontradas: " + prendas.size());
+
+		assertNotNull(prendas, "La lista de prendas es nula.");
+		assertTrue(prendas.size() > 0, "No existen prendas.");
+		
 	}
 
 	@Test
-	void testFindById() {
-		Long id = 1L;
-		Optional<Prenda> prendaOptional = prendaRepository.findById(id);
-
-		LOGGER.info("prenda is present: " + prendaOptional.isPresent()) ;
-		
-		assertTrue(prendaOptional.isPresent());
-		
-		if (prendaOptional.isPresent()) {
-			assertNotNull(prendaOptional.get());
-			LOGGER.info("prenda: " + prendaOptional.get()) ;
+	void testFindAllById() {
+		Long id = 4L;
+		Optional<Prenda> prendaOpcional = prendaRepository.findById(id);
+		if (prendaOpcional.isPresent()){
+			Prenda prenda = prendaOpcional.get();
+			
+			LOGGER.info("Prenda encontrada: " + prenda);
+			assertEquals(TipoPrenda.PANTALON, prenda.getTipo());
+			
 		}
 	}
 

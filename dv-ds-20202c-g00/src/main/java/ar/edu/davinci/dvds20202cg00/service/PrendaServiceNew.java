@@ -51,5 +51,8 @@ public class PrendaServiceNew {
 	public void delete(Long prendaId) {
 		prendaRepository.deleteById(prendaId);
 	}
-
+	
+	public long count() {
+		return prendaRepository.count();
+	}
 }

@@ -48,13 +48,17 @@ public class PrendaServiceImpl implements PrendaService {
 
 	@Override
 	public Prenda save(Prenda prenda) {
-		// TODO Auto-generated method stub
 		return prendaRepository.save(prenda);
 	}
 
 	@Override
 	public void delete(Prenda prenda) {
 		prendaRepository.delete(prenda);
+	}
+
+	@Override
+	public long count() {
+		return prendaRepository.count();
 	}
 
 }

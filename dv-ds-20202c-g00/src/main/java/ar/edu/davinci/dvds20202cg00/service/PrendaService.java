@@ -17,5 +17,6 @@ public interface PrendaService {
 	public Prenda findById(Long id);
 	public Prenda save(Prenda prenda);
 	public void delete(Prenda prenda);
+	public long count();
 
 }

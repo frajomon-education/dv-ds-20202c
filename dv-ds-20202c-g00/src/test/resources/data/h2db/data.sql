@@ -4,6 +4,7 @@ INSERT INTO `prendas`
 `prd_precio_base`,
 `prd_tipo_prenda`)
 VALUES
-(1, 'Camisa Celeste', 100.3, 'CAMISA'),
-(2, 'Pantalon Celeste', 100, 'PANTALON'),
-(3, 'Saco Paseo', 1000, 'SACO');
+(1, 'Camisa Celeste', 10.24, 'CAMISA'),
+(2, 'Camisa Blanca', 100.50, 'CAMISA'),
+(3, 'Saco Vestir', 102.4, 'SACO'),
+(4, 'Pantalon Gabardina Beige', 1004, 'PANTALON');

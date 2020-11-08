@@ -1,1 +1,7 @@
-# dv-ps-20202c-g00
+# dv-ds-20202c-g00
+
+Escuela Davinci
+
+Diseño de Sistema
+
+Trabajo Final
