@@ -10,7 +10,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.davinci.dvds20202cg00.controller.TiendaApp;
 import ar.edu.davinci.dvds20202cg00.service.PrendaService;
@@ -63,6 +67,25 @@ public class PrendaController extends TiendaApp {
 
 		return "redirect:/tienda/prendas/list";
 	}
+	
+	@RequestMapping(value = "/prendas/edit/{id}", method = RequestMethod.GET)
+	public ModelAndView showEditPrendaPage(@PathVariable(name = "id") Long prendaId) {
+		LOGGER.info("GET - showEditPrendaPage - /prendas/edit/{id}");
+		LOGGER.info("prenda: " + prendaId);
 
+		ModelAndView mav = new ModelAndView("prendas/edit_prendas");
+		Prenda prenda = prendaService.findById(prendaId);
+		mav.addObject("prenda", prenda);
+
+		return mav;
+	}
+
+	@RequestMapping(value = "/prendas/delete/{id}", method = RequestMethod.GET)
+	public String deletePrenda(@PathVariable(name = "id") Long prendaId) {
+		LOGGER.info("GET - deletePrenda - /prendas/delete/{id}");
+		LOGGER.info("prenda: " + prendaId);
+		prendaService.delete(prendaId);
+		return "redirect:/tienda/prendas/list";
+	}
 	
 }

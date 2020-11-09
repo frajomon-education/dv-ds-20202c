@@ -57,8 +57,15 @@ public class PrendaServiceImpl implements PrendaService {
 	}
 
 	@Override
+	public void delete(Long id) {
+		prendaRepository.deleteById(id);
+	}
+	
+	@Override
 	public long count() {
 		return prendaRepository.count();
 	}
+
+
 
 }
