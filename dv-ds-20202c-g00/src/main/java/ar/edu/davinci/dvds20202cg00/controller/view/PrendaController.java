@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import ar.edu.davinci.dvds20202cg00.controller.TiendaApp;
 import ar.edu.davinci.dvds20202cg00.service.PrendaService;
+import ar.edu.davinci.dvds20202cg00.controller.TiendaApp;
 import ar.edu.davinci.dvds20202cg00.model.Prenda;
 
 @Controller
@@ -53,6 +53,7 @@ public class PrendaController extends TiendaApp {
 		LOGGER.info("GET - showNewPrendaPage - /prendas/new");
 		Prenda prenda = new Prenda();
 		model.addAttribute("prenda", prenda);
+		model.addAttribute("tipoPrendas", prendaService.getTipoPrenda());
 
 		LOGGER.info("prendas: " + prenda.toString());
 
@@ -76,6 +77,8 @@ public class PrendaController extends TiendaApp {
 		ModelAndView mav = new ModelAndView("prendas/edit_prendas");
 		Prenda prenda = prendaService.findById(prendaId);
 		mav.addObject("prenda", prenda);
+		mav.addObject("tipoPrendas", prendaService.getTipoPrenda());
+		mav.addObject("tipoPrendaActual", prenda.getTipo());
 
 		return mav;
 	}

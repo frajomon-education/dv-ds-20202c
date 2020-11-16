@@ -24,4 +24,8 @@ public enum TipoPrenda {
 	public String getDescripcion() {
 		return descripcion;
 	}
+	
+	public static TipoPrenda buscar(String descipcion) {
+		return TipoPrenda.valueOf(descipcion);
+	}
 }
